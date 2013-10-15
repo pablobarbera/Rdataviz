@@ -62,10 +62,9 @@ pq <- pq + theme(
         legend.position = "bottom",
         legend.direction = "horizontal"
     ) +
-    guides(color = guide_legend(override.aes = list(size=5))) +
+    guides(color = guide_legend(nrow=2, override.aes = list(size=5))) +
     scale_color_discrete("Language", labels = langs)
 pq
-
 
 # now only tweets from Europe, with top 20 languages
 df <- read.csv("data/loc_lang.csv", stringsAsFactors=F)
