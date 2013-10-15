@@ -1,0 +1,16 @@
+*.history
+docs
+slides/cache
+slides/figure
+slides/*.png
+slides/*part*
+backup
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.aux
+py/
