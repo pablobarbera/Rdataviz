@@ -4,7 +4,7 @@ doInstall <- TRUE  # Change to FALSE if you don't want packages installed.
 
 toInstall <- c(
     "devtools", ## library to install packages from github
-    "ggplot2", "scales", "gridExtra", ## gplot2 and extensions
+    "ggplot2", "scales", "gridExtra", "hexbin", ## gplot2 and extensions
     "gdata", ## library to open excel files
     "igraph", ## library to create network objects
     "cshapes", 

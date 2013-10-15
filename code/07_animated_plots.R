@@ -51,7 +51,7 @@ stan.results <- extract(stan.fit) # samples from posterior
 ## loading from backup
 load("backup/gibbs.results")
 load("backup/metropolis.results")
-load("backup/gibbs.results")
+load("backup/stan.results")
 
 ## preparing data for plot
 gibbs <- data.frame(

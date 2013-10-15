@@ -56,7 +56,7 @@ fb.data$time <- as.POSIXct(fb.data$time, format="%Y-%m-%dT%H")
 fb.data$count <- 1
 counts <- aggregate(fb.data$count, by=list(time=fb.data$time), FUN=sum)
 
-p <- ggplot(counts, aes(x=time,s y=x))
+p <- ggplot(counts, aes(x=time, y=x))
 p + geom_line() + scale_x_datetime(breaks="2 hours")
 
 library(scales) # loading additional library scales
