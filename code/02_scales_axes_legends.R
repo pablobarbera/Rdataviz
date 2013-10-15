@@ -9,6 +9,7 @@
 ## Data: public Facebook posts from Oct. 2 mentioning "shutdown"
 ###############################################################################
 
+## backup: 65K public Facebook posts from Oct. 2nd
 load("backup/fb.data")
 
 ## random sample of N=2000 
@@ -70,8 +71,6 @@ p + geom_line() + scale_x_datetime(breaks="2 hours",
 # note that all of these can be linked to a factor variable, as in previous 
 # script, and then it becomes an aesthetics; or it can go out as a property
 # of the geom and then applies to all of them
-
-of this goes outside of 'aes' and 
 
 p <- ggplot(df, aes(x=likes_count))
 p + scale_x_log10() + geom_histogram(color="red") # border of geoms

@@ -18,8 +18,9 @@ library(igraph)
 # (get your token from 'https://developers.facebook.com/tools/explorer/')
 # (make sure you give permissions to access your list of friends)
 token <- 'XXXXXXXXXXXXXXXXXXXXXXX'
-token <- readLines("backup/token.txt")
 mat <- getNetwork(token, format="adj.matrix")
+
+## loading backup
 load("backup/mat")
 
 # preparing node list and layout with igraph

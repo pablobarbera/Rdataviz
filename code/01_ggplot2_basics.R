@@ -13,48 +13,20 @@ library(Rfacebook)
 ## get your token from 'https://developers.facebook.com/tools/explorer/'
 ## and paste it here:
 token <- 'XXXXXXXXXXXXXXXXXXXXXXX'
-token <- readLines("backup/token.txt")
-
-## downloading all posts from Oct. 2 00:00 to Oct. 3 00:00
-posts <- list() ## empty list to be filled with data
-i <- 1 ## counter
-init <- "2 october 2013"; end <- "3 october 2013"
-
-while (!is.null(end)){
-    posts2[[i]] <- searchFacebook("shutdown", token, n=200,
-        since = init, until = end) ## download public posts
-    end <- tail(posts2[[i]]$created_time, n=1) ## new end data
-    cat(i, end, "\n")
-    i <- i + 1
-}
-
-posts <- do.call(rbind, posts)
-
-## downloading information about users who posted about "shutdown"
-
-users <- list() ## empty list to be filled with user data
-i <- 1; from <- 1; to <- 500 ## counters
-n.calls <- ceiling(length(posts$from_id) / 500) ## number of API calls
-
-while (i <= n.calls){
-    users[[i]] <- getUsers(posts$from_id[from:to], token) ## get user data
-    cat(i, " ") ## information message
-    i <- i + 1; from <- from + 500; to <- to + 500 ## update counters
-}
-
-users <- do.call(rbind, users)
+posts <- searchFacebook("shutdown", token, n=200)
+users <- getUsers(posts$from_id, token)
 
 ## merging data into a single data frame
 names(users)[1] <- "from_id"
 users <- users[!duplicated(users$from_id),]
 fb.data <- merge(posts, users, by="from_id")
 
+## backup: 65K public Facebook posts from Oct. 2nd
+load("backup/fb.data")
 
 ###############################################################################
 ## Analysis: what posts get more likes?
 ###############################################################################
-
-load("backup/fb.data")
 
 ## random sample of N=2000 
 df <- fb.data[sample(1:length(fb.data$from_id), 2000),]

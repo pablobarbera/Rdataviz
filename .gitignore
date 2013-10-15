@@ -5,6 +5,9 @@ slides/figure
 slides/*.png
 slides/*part*
 backup
+*.tex
+*.Rnw
+*.fdb_latexmk
 *.fls
 *.log
 *.nav

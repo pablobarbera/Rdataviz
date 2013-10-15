@@ -9,6 +9,7 @@
 ## Analysis: determinants of popularity on Facebook
 ###############################################################################
 
+## backup: 65K public Facebook posts from Oct. 2nd
 load("backup/fb.data")
 
 ## PREPARING DATA SET
