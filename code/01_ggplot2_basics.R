@@ -21,8 +21,6 @@ names(users)[1] <- "from_id"
 users <- users[!duplicated(users$from_id),]
 fb.data <- merge(posts, users, by="from_id")
 
-## backup: 65K public Facebook posts from Oct. 2nd
-load("backup/fb.data")
 
 ###############################################################################
 ## Analysis: what posts get more likes?

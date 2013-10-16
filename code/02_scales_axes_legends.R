@@ -9,11 +9,17 @@
 ## Data: public Facebook posts from Oct. 2 mentioning "shutdown"
 ###############################################################################
 
-## backup: 65K public Facebook posts from Oct. 2nd
-load("backup/fb.data")
+library(Rfacebook)
+## get your token from 'https://developers.facebook.com/tools/explorer/'
+## and paste it here:
+token <- 'XXXXXXXXXXXXXXXXXXXXXXX'
+posts <- searchFacebook("shutdown", token, n=200)
+users <- getUsers(posts$from_id, token)
 
-## random sample of N=2000 
-df <- fb.data[sample(1:length(fb.data$from_id), 2000),]
+## merging data into a single data frame
+names(users)[1] <- "from_id"
+users <- users[!duplicated(users$from_id),]
+fb.data <- merge(posts, users, by="from_id")
 
 # load ggplot2
 library(ggplot2)

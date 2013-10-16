@@ -29,8 +29,6 @@ df$date <- paste("01", df$month, df$year)
 df$date <- as.Date(df$date, format="%d %b %Y")
 # see ?strptime for mroe info on date formats in R
 
-# backup
-load("backup/df")
 
 # plot with default options
 library(ggplot2)

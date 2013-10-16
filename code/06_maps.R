@@ -228,7 +228,7 @@ pq + theme(legend.direction="horizontal",
 # plotting proportions instead of counts
 library(XML)
 url <- "http://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population"
-table <- readHTMLTable(url, stringsAsFactors=F) ## load("backup/table")
+table <- readHTMLTable(url, stringsAsFactors=F) ## 
 ## after checking content of 'table', we choose what we need
 pop <- data.frame(table[[2]][1:52,3:4])
 names(pop) <- c("state", "pop")

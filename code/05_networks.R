@@ -20,9 +20,6 @@ library(igraph)
 token <- 'XXXXXXXXXXXXXXXXXXXXXXX'
 mat <- getNetwork(token, format="adj.matrix")
 
-## loading backup
-load("backup/mat")
-
 # preparing node list and layout with igraph
 network <- graph.adjacency(mat, mode="undirected") ## igraph object
 fc <- fastgreedy.community(network) ## communities / clusters

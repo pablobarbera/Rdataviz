@@ -48,10 +48,10 @@ stan.fit <- stan(fit=stan.model, data=stan.data, iter=400,
     warmup=100, chains=1, thin=1, init=inits, seed=999) # running model
 stan.results <- extract(stan.fit) # samples from posterior
 
-## loading from backup
-load("backup/gibbs.results")
-load("backup/metropolis.results")
-load("backup/stan.results")
+## loading results
+load("data/gibbs.results")
+load("data/metropolis.results")
+load("data/stan.results")
 
 ## preparing data for plot
 gibbs <- data.frame(

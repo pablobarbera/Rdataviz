@@ -9,8 +9,17 @@
 ## Analysis: determinants of popularity on Facebook
 ###############################################################################
 
-## backup: 65K public Facebook posts from Oct. 2nd
-load("backup/fb.data")
+library(Rfacebook)
+## get your token from 'https://developers.facebook.com/tools/explorer/'
+## and paste it here:
+token <- 'XXXXXXXXXXXXXXXXXXXXXXX'
+posts <- searchFacebook("shutdown", token, n=200)
+users <- getUsers(posts$from_id, token)
+
+## merging data into a single data frame
+names(users)[1] <- "from_id"
+users <- users[!duplicated(users$from_id),]
+fb.data <- merge(posts, users, by="from_id")
 
 ## PREPARING DATA SET
 
