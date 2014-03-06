@@ -26,6 +26,11 @@ fc <- fastgreedy.community(network) ## communities / clusters
 set.seed(123)
 l <- layout.fruchterman.reingold(network, niter=1000, coolexp=0.5) ## layout
 
+# checking who is in each cluster
+cl <- data.frame(name = fc$names, cluster = fc$membership, stringsAsFactors=F)
+cl <- cl[order(cl$cluster),]
+cl[cl$cluster==1,]
+
 # preparing data for plot
 d <- data.frame(l); names(d) <- c("x", "y")
 d$cluster <- factor(fc$membership)
@@ -113,7 +118,7 @@ central.names <- fc$names[unlist(central.nodes)] ## names of central nodes
                                                  ## within each cluster
 
 ## labels I give to each cluster
-labels <- c("NYU", "EUI", "UPF", "MA", "Caixa", "NYC", "Others")
+labels <- c("NYU", "EUI", "College", "Grad School", "Caixa Fellow", "NYC", "Others")
 pq <- pq + scale_color_discrete(labels=labels)
 pq
 
